@@ -4,7 +4,7 @@ FROM oven/bun:1.0.15 as base
 WORKDIR /app
 
 # Установим puppeteer и bun-зависимости
-COPY package.json bun.lockb ./
+COPY package.json bun.lock ./
 RUN bun install --frozen-lockfile
 
 # Установка всех нужных либ для Chromium
