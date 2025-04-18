@@ -26,6 +26,7 @@ RUN apt-get update && apt-get install -y \
     --no-install-recommends && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
+ENV PUPPETEER_CACHE_DIR=/usr/local/share/.cache/puppeteer
 RUN bunx puppeteer install
 
 COPY . .
