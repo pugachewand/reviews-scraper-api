@@ -1,13 +1,10 @@
-
-FROM oven/bun:1.0.15 as base
+FROM oven/bun:1.0.15
 
 WORKDIR /app
 
-# Установим puppeteer и bun-зависимости
 COPY package.json bun.lock ./
-RUN bun install --frozen-lockfile
+RUN bun install
 
-# Установка всех нужных либ для Chromium
 RUN apt-get update && apt-get install -y \
     wget \
     ca-certificates \
@@ -26,7 +23,8 @@ RUN apt-get update && apt-get install -y \
     libxdamage1 \
     libxrandr2 \
     xdg-utils \
-    --no-install-recommends
+    --no-install-recommends && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY . .
 
