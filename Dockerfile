@@ -12,7 +12,8 @@ RUN apt-get update && apt-get install -y \
     wget \
     ca-certificates \
     fonts-liberation \
-    libappindicator3-1 \
+    libappindicator3-dev \
+    libgtk-3-0 \
     libasound2 \
     libatk-bridge2.0-0 \
     libatk1.0-0 \
