@@ -1,6 +1,8 @@
 import type { Page } from "puppeteer"
 import puppeteer from "puppeteer"
 
+console.log("[DEBUG] Puppeteer executable path:", puppeteer.executablePath())
+
 async function autoScroll(page: Page, containerSelector: string): Promise<void> {
   await page.evaluate((selector) => {
     return new Promise<void>((resolve) => {
