@@ -2,6 +2,9 @@ FROM oven/bun:1.0.15
 
 WORKDIR /app
 
+ENV NODE_ENV=production
+ENV PUPPETEER_CACHE_DIR=/usr/local/share/.cache/puppeteer
+
 COPY package.json bun.lock ./
 RUN bun install
 
@@ -26,7 +29,6 @@ RUN apt-get update && apt-get install -y \
     --no-install-recommends && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-ENV PUPPETEER_CACHE_DIR=/usr/local/share/.cache/puppeteer
 RUN bunx puppeteer install
 
 COPY . .
